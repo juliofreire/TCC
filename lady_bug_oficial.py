@@ -35,10 +35,6 @@ class Envir:
 
         # Trail
         self.trail_set = []
-        # self.goal0 = (600, 100, math.radians(270))
-        # self.goal1 = (800, 300, math.radians(0))
-        # self.goal2 = (600, 500, math.radians(90))
-        # self.goal3 = (400, 300, math.radians(180))
         # Points
         self.point0 = (600, 100, math.radians(270))
         self.point1 = (800, 300, math.radians(0))
@@ -51,7 +47,6 @@ class Envir:
         self.bandit = np.zeros(4)
         self.bandit[self.b] = 1
         self.point_size = (10, 10)
-
 
     def write_info(self, v, omega):
         txt = f"v = {v}, omega = {omega}"
@@ -132,7 +127,7 @@ class Robot:
         self.n_arms = np.arange(4)
         self.OCC = np.zeros(4)
 
-        # Graphics ######### ACERTAR A IMAGEM DO ROBO
+        # Graphics
         self.img = pygame.image.load(robotImg)
         self.rotated = self.img
         self.rect = self.rotated.get_rect(center=(self.x, self.y))
@@ -226,7 +221,6 @@ class Robot:
                 self.Q.append(self.Q[self.n - 1] + (1 / self.n) * (self.R[self.n] - self.Q[self.n - 1]))
             self.OCC[self.action] += 1
             self.n = self.n + 1
-            # self.nodes = self.nodes + 1
 
             if rho_point <= 0.02:
                 self.reward = self.reward + 1
@@ -290,7 +284,6 @@ class Robot:
                     self.goaltheta += math.degrees(0.00033)
                 elif event.key == pygame.K_KP9:
                     self.goaltheta -= math.degrees(0.00033)
-
 
 # Initialisation
 pygame.init()
